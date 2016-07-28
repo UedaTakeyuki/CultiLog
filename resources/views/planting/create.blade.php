@@ -24,15 +24,19 @@ $(function() {
     $( "#datepicker" ).datepicker({ dateFormat: "yy-mm-dd" });
 });
 
+$(document).ready(function(){
 $('#basics').typeahead({
 	    source:  function (query, process) {
-        return $.get('http://klingsor.uedasoft.com/tools/160728/', { query: query }, function (data) {
+//        return $.get('http://klingsor.uedasoft.com/tools/160728/', { query: query }, function (data) {
+//        return $.get('http://cultilog.uedasoft.com/ajaxpro.php', { query: query }, function (data) {
+        return $.get('/ajaxpro.php/', { query: query }, function (data) {
         		console.log(data);
         		data = $.parseJSON(data);
 	            return process(data);
 	        });
 	    }
 	});
+});
 
 </script>   
 @endsection

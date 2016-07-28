@@ -13,6 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
+//Route::get('plant', 'PlantController@index');
 });
 
 // unit
@@ -21,7 +22,7 @@ Route::resource('unit', 'UnitController');
 
 // plant
 Route::get('plant', 'PlantController@index');
-Route::get('plant/create', 'PlantController@create'); 
+Route::get('plant/create', 'PlantController@create');
 Route::get('plant/{id}', 'PlantController@show');
 
 Route::post('plant', 'PlantController@store');
