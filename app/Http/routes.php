@@ -29,3 +29,12 @@ Route::post('plant', 'PlantController@store');
 
 // planting
 Route::resource('planting', 'PlantingController');
+
+Route::get('ajaxpro2', function()
+{
+    $plants = App\Plant::orderBy('kana', 'ASC')->get();
+    foreach ($plants as $value){
+        $json[] = $value->name;
+    }
+    return json_encode($json, JSON_UNESCAPED_UNICODE);
+});
