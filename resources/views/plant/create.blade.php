@@ -5,7 +5,7 @@
  
     <hr/>
  
-    {!! Form::open(['url' => 'plants']) !!}
+    {!! Form::open(['url' => 'plant']) !!}
         <div class="form-group">
             {!! Form::label('name', '品種名:') !!}
             {!! Form::text('name', null, ['class' => 'form-control']) !!}
