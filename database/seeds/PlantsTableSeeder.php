@@ -37,12 +37,19 @@ class PlantsTableSeeder extends Seeder
         $this->add_plant_without_kana("ディル");
         $this->add_plant_without_kana("バジル");
         $this->add_plant_without_kana("カーボネロ","黒キャベツ");
-        $this->add_plant_without_kana("ルッコラ");
-        $this->add_plant_without_kana("ルッコラ");
-        $this->add_plant_without_kana("ルッコラ");
-        $this->add_plant_without_kana("ルッコラ");
-        $this->add_plant_without_kana("ルッコラ");
-        $this->add_plant_without_kana("ルッコラ");
+        $this->add_plant_without_kana("ランドクレス","ガーデンクレス");
+        $this->add_plant_without_kana("スイスチャード","不断草");
+        $this->add_plant_without_kana("プリムラ");
+        $this->add_plant_without_kana("タイム");
+        $this->add_plant("高菜","タカナ");
+        $this->add_plant_without_kana("スティックセニョール");
+        $this->add_plant_without_kana("パクチー");
+        $this->add_plant_without_kana("レモンバーム");
+        $this->add_plant_without_kana("トレビーゾ");
+        $this->add_plant_without_kana("イタリアンパセリ");
+        $this->add_plant_without_kana("スペアミント");
+        $this->add_plant_without_kana("セルバチコ","セルバチカ、ワイルドルッコラ");
+        $this->add_plant_without_kana("オレガノ");
     }
     
     public function add_plant($name, $kana, $alias=""){
