@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Shelf;
+use App\Plant;
+use App\Planting;
+
 class PlantingController extends Controller
 {
     /**
@@ -41,6 +45,16 @@ class PlantingController extends Controller
     public function store(Request $request)
     {
         //
+        //
+        // ②マスアサインメントを使って、記事をDBに作成
+        $planting = new Planting;
+        $planting->planted_at = $request->input('planted_at');
+        $planting->shelf_id = Shelf::where('name', $request->input('shelf_id'))->find(1)->id;
+        $planting->plant_id = Plant::where('name', $request->input('plant_id'))->find(1)->id;
+        $planting->save();
+ 
+        // ③記事一覧へリダイレクト
+        return redirect('planting');
     }
 
     /**
