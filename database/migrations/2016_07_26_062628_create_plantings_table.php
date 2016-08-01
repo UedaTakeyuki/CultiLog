@@ -17,8 +17,8 @@ class CreatePlantingsTable extends Migration
             $table->integer('shelf_id')->unsigned();   // 追加
             $table->integer('plant_id')->unsigned();   // 追加
             $table->date('planted_at');
-
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

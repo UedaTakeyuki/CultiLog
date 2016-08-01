@@ -46,11 +46,10 @@ class PlantingController extends Controller
     {
         //
         //
-        // ②マスアサインメントを使って、記事をDBに作成
         $planting = new Planting;
         $planting->planted_at = $request->input('planted_at');
-        $planting->shelf_id = Shelf::where('name', $request->input('shelf_id'))->find(1)->id;
-        $planting->plant_id = Plant::where('name', $request->input('plant_id'))->find(1)->id;
+        $planting->shelf_id = Shelf::where('name', $request->input('shelf_id'))->first()->id;
+        $planting->plant_id = Plant::where('name', $request->input('plant_id'))->first()->id;
         $planting->save();
  
         // ③記事一覧へリダイレクト
@@ -100,5 +99,7 @@ class PlantingController extends Controller
     public function destroy($id)
     {
         //
+        Planting::destroy($id);
+        return redirect('planting');
     }
 }

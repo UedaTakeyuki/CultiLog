@@ -25,9 +25,10 @@
                                       {{$shelf->name}}
                                     </a>
                                     <br>
-                                    ぐげげげげ<span class="badge">26</span><br>
-                                    あああああ<span class="badge">26</span><br>
-                                    けろけろ<span class="badge pull-right">26</span><br>
+                                    @foreach($shelf->plantings as $planting)
+                                        {{$planting->plant->name}}
+                                        <span class="badge pull-right">{{$planting->duration()}}</span><br>
+                                    @endforeach
                                 </td>
                             </tr>
                         @endforeach

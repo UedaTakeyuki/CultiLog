@@ -13,5 +13,10 @@ class Shelf extends Model
     {
         return $this->belongsTo('App\Unit');
     }
+    
+    public function plantings() 
+    {
+        return $this->hasMany('App\Planting');
+    }
 
 }
