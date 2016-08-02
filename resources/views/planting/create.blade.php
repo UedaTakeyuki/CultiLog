@@ -45,7 +45,7 @@ $('#basics').typeahead({
 
 @section('content')
 <h1>定植の追加</h1>
- 
+<a href="/plant" class="btn btn-primary btn-sm">品種一覧</a>
     <hr/>
  
     {!! Form::open(['url' => 'planting']) !!}

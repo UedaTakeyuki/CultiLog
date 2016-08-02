@@ -59,7 +59,7 @@ class PlantingController extends Controller
         $planting->save();
  
         // ③記事一覧へリダイレクト
-        return redirect('planting');
+        return redirect('shelf/'.$request->input('shelf_id'));
     }
 
     /**

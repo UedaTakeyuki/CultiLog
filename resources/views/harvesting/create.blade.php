@@ -18,8 +18,8 @@ $(function() {
     {!! Form::open(['url' => 'harvesting']) !!}
         {{Form::hidden('planting_id', $planting->id)}}
         <div class="form-group">
-            {!! Form::label('harvested_at', '定植日:') !!}
-            {!! Form::text('harvested_at', null, ['id' => 'datepicker', 'class' => 'form-control']) !!}
+            {!! Form::label('harvested_at', '収穫日:') !!}
+            {!! Form::text('harvested_at', date('Y-m-d'), ['id' => 'datepicker', 'class' => 'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::label('weight', '重さ:') !!}

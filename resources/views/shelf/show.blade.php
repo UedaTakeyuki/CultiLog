@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layout3')
 
 @section('content')
     <h1>Shelf</h1>

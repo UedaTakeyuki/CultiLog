@@ -1,8 +1,9 @@
 @extends('layout2')
  
 @section('content')
-    <h1>Units</h1>
- 
+    <h1>栽培棚管理</h1>
+    <a href="/plant" class="btn btn-primary btn-sm">品種一覧</a>
+
     <hr/>
      
     <div class="container-fluid">

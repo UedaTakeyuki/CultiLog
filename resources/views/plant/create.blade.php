@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <h1>収穫</h1>
+    <h1>品種追加</h1>
  
     <hr/>
  
@@ -14,6 +14,10 @@
         <div class="form-group">
             {!! Form::label('kana', 'ヨミガナ:') !!}
             {!! Form::text('kana', null, ['class' => 'form-control']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('alias', '別名:') !!}
+            {!! Form::text('alias', null, ['class' => 'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::submit('追加', ['class' => 'btn btn-primary form-control']) !!}
