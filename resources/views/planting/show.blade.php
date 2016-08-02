@@ -30,11 +30,12 @@
       legend: 'none'                  // 凡例なし    
      };
                  
-    // 指定されたIDの要素に散布図を作成
-    var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
-      
-    // グラフの描画
-    chart.draw(data, options);
+    @if (count($planting->harvestings) != 0)
+      // 指定されたIDの要素に散布図を作成
+      var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+      // グラフの描画
+      chart.draw(data, options);
+    @endif
   }
 </script>
 @endsection

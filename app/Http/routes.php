@@ -21,6 +21,9 @@ Route::get('/', //function () {
 //Route::get('unit', 'UnitsController@index');
 Route::resource('unit', 'UnitController');
 
+// shelf
+Route::resource('shelf', 'ShelfController');
+
 // plant
 Route::get('plant', 'PlantController@index');
 Route::get('plant/create', 'PlantController@create');
@@ -29,6 +32,7 @@ Route::get('plant/{id}', 'PlantController@show');
 Route::post('plant', 'PlantController@store');
 
 // planting
+Route::get('planting/create/{shelf_id}', 'PlantingController@create');
 Route::resource('planting', 'PlantingController');
 
 // harvesting

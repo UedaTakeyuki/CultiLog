@@ -5,7 +5,7 @@
  
     <hr/>
      
-    @foreach($harvestings as $harvesting)
+    @foreach($plants as $plant)
         <article>
             <h2>
                 <a href="{{ url('plant', $plant->id) }}">

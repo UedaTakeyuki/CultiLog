@@ -5,12 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
 use App\Shelf;
-use App\Plant;
-use App\Planting;
 
-class PlantingController extends Controller
+class ShelfController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,9 +17,6 @@ class PlantingController extends Controller
     public function index()
     {
         //
-        $plantings = Planting::orderBy('planted_at', 'ASC')->get();
-        return view('planting.index', compact('plantings'));
-
     }
 
     /**
@@ -30,15 +24,9 @@ class PlantingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id=null)
+    public function create()
     {
         //
-        if ($id != null){
-            $planting_id = $id;
-            return view('planting.create',compact('planting_id'));
-        } else {
-            return view('planting.create');
-        }
     }
 
     /**
@@ -50,16 +38,6 @@ class PlantingController extends Controller
     public function store(Request $request)
     {
         //
-        $planting = new Planting;
-        $planting->planted_at = $request->input('planted_at');
-        //echo var_dump($request); exit;        if (is_int($request->input('shelf_id'))){
-        $planting->shelf_id = $request->input('shelf_id');
-//            $planting->shelf_id = Shelf::where('name', $request->input('shelf_id'))->first()->id;
-        $planting->plant_id = Plant::where('name', $request->input('plant_id'))->first()->id;
-        $planting->save();
- 
-        // ③記事一覧へリダイレクト
-        return redirect('planting');
     }
 
     /**
@@ -71,8 +49,9 @@ class PlantingController extends Controller
     public function show($id)
     {
         //
-        $planting = Planting::findOrFail($id);
-        return view('planting.show',compact('planting'));
+        $shelf = Shelf::findOrFail($id);
+        return view('shelf.show', compact('shelf'));
+
     }
 
     /**
@@ -84,8 +63,6 @@ class PlantingController extends Controller
     public function edit($id)
     {
         //
-        $planting = Planting::findOrFail($id);
-        return view('planting.edit',compact('planting'));
     }
 
     /**
@@ -109,7 +86,5 @@ class PlantingController extends Controller
     public function destroy($id)
     {
         //
-        Planting::destroy($id);
-        return redirect('planting');
     }
 }

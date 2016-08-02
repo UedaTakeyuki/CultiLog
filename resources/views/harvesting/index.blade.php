@@ -8,6 +8,7 @@
     @foreach($harvestings as $harvesting)
     <tr>
         <td>{{$harvesting->harvested_at}}</td>
+        <td>{{$harvesting->planting->id}}</td>
         <td>{{$harvesting->planting->shelf->name}}</td>
         <td>{{$harvesting->planting->plant->name}}</td>
         <td>{{$harvesting->duration()}}</td>
