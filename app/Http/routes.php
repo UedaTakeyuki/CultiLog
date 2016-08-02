@@ -30,6 +30,11 @@ Route::post('plant', 'PlantController@store');
 // planting
 Route::resource('planting', 'PlantingController');
 
+// harvesting
+Route::get('harvesting/create/{planting_id}', 'HarvestingController@create');
+Route::post('harvesting', 'HarvestingController@store');
+//Route::resource('harvesting', 'HarvestingController');
+
 Route::get('ajaxpro2', function()
 {
     $plants = App\Plant::orderBy('kana', 'ASC')->get();

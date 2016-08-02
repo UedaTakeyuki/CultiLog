@@ -29,6 +29,11 @@ class Planting extends Model
     }
     
     //
+    public function harvestings()
+    {
+        return $this->hasMany('App\Harvesting');
+    }
+    //
     public function duration()
     {
         $d = $this->planted_at;
@@ -41,6 +46,5 @@ class Planting extends Model
         $SecondDiff = abs($TS2 - $TS1);
         $DayDiff = $SecondDiff / (60 * 60 * 24);
         return ceil($DayDiff);
-
     }
 }

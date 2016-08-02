@@ -5,12 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
-use App\Shelf;
-use App\Plant;
 use App\Planting;
+use App\Harvesting;
 
-class PlantingController extends Controller
+class HarvestingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,20 +18,20 @@ class PlantingController extends Controller
     public function index()
     {
         //
-        $plantings = Planting::orderBy('planted_at', 'ASC')->get();
-        return view('planting.index', compact('plantings'));
-
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     * @param  int  $planting_id
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($planting_id)
     {
         //
-        return view('planting.create');
+        $planting = Planting::findOrFail($planting_id);
+        return view('harvesting.create',compact('planting'));
+
     }
 
     /**
@@ -45,14 +43,16 @@ class PlantingController extends Controller
     public function store(Request $request)
     {
         //
-        $planting = new Planting;
-        $planting->planted_at = $request->input('planted_at');
-        $planting->shelf_id = Shelf::where('name', $request->input('shelf_id'))->first()->id;
-        $planting->plant_id = Plant::where('name', $request->input('plant_id'))->first()->id;
-        $planting->save();
+        // ①フォームの入力値を取得
+        $inputs = \Request::all();
  
+        // ②マスアサインメントを使って、記事をDBに作成
+        Harvesting::create($inputs);
+
         // ③記事一覧へリダイレクト
-        return redirect('planting');
+        //return redirect('planting.show',$inputs['planting_id']);
+        return redirect("planting/".$inputs['planting_id']);
+
     }
 
     /**
@@ -64,8 +64,6 @@ class PlantingController extends Controller
     public function show($id)
     {
         //
-        $planting = Planting::findOrFail($id);
-        return view('planting.show',compact('planting'));
     }
 
     /**
@@ -77,8 +75,6 @@ class PlantingController extends Controller
     public function edit($id)
     {
         //
-        $planting = Planting::findOrFail($id);
-        return view('planting.edit',compact('planting'));
     }
 
     /**
@@ -102,7 +98,5 @@ class PlantingController extends Controller
     public function destroy($id)
     {
         //
-        Planting::destroy($id);
-        return redirect('planting');
     }
 }

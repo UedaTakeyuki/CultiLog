@@ -1,7 +1,8 @@
 @extends('layout')
- 
+
+
 @section('content')
-    <h1>栽培品種の追加</h1>
+    <h1>収穫</h1>
  
     <hr/>
  

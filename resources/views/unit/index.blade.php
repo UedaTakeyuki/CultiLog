@@ -26,7 +26,9 @@
                                     </a>
                                     <br>
                                     @foreach($shelf->plantings as $planting)
-                                        {{$planting->plant->name}}
+                                        <a href="{{ url('planting', $planting->id) }}" data-ajax="false" >
+                                            {{$planting->plant->name}}
+                                        </a>
                                         <span class="badge pull-right">{{$planting->duration()}}</span><br>
                                     @endforeach
                                 </td>
