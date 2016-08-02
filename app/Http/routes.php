@@ -33,6 +33,7 @@ Route::post('plant', 'PlantController@store');
 
 // planting
 Route::get('planting/create/{shelf_id}', 'PlantingController@create');
+Route::delete('planting/close/{id}', 'PlantingController@close');
 Route::resource('planting', 'PlantingController');
 
 // harvesting

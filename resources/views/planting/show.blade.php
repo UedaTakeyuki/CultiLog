@@ -43,8 +43,12 @@
 @section('content')
     <h1>Planting</h1>
 
-    <h2>{{$planting->plant->name}}<br>
-    {{$planting->planted_at}}<br></h2>
+    <h2>{{$planting->plant->name}}</h2>
+    <h3>定植日：{{$planting->planted_at}}<br>
+    @if(($planting->closed_at)!=0)
+      撤収日：{{$planting->closed_at}}<br>
+    @endif
+    </h3>
 
     <a href="/harvesting/create/{{$planting->id}}" class="btn btn-primary btn-sm">収穫</a>
 

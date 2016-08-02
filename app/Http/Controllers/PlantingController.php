@@ -112,4 +112,18 @@ class PlantingController extends Controller
         Planting::destroy($id);
         return redirect('planting');
     }
+
+    /**
+     * Close the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function close($id)
+    {
+        //
+        $planting = Planting::findOrFail($id);
+        $planting->closed_at = date('Y-m-d');
+        $planting->save();
+    }
 }

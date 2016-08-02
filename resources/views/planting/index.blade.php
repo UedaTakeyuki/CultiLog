@@ -12,7 +12,7 @@
         <td>{{$planting->planted_at}}</td>
         <td>{{$planting->shelf->name}}</td>
         <td>{{$planting->plant->name}}</td>
-        <td><a href="/planting/show/{{$planting->id}}" class="btn btn-primary btn-sm">詳細</a></td>
+        <td><a href="/planting/{{$planting->id}}" class="btn btn-primary btn-sm">詳細</a></td>
         <td><a href="/planting/edit/{{$planting->id}}" class="btn btn-primary btn-sm">編集</a></td>
         <td>
             <form method="post" action="/planting/{{$planting->id}}">

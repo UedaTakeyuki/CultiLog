@@ -1,4 +1,4 @@
-@extends('layout2')
+@extends('layout3')
  
 @section('content')
     <h1>栽培棚管理</h1>
@@ -27,10 +27,12 @@
                                     </a>
                                     <br>
                                     @foreach($shelf->plantings as $planting)
-                                        <a href="{{ url('planting', $planting->id) }}" data-ajax="false" >
-                                            {{$planting->plant->name}}
-                                        </a>
-                                        <span class="badge pull-right">{{$planting->duration()}}</span><br>
+                                        @if(($planting->closed_at)==0)
+                                            <a href="{{ url('planting', $planting->id) }}" data-ajax="false" >
+                                                {{$planting->plant->name}}
+                                            </a>
+                                            <span class="badge pull-right">{{$planting->duration()}}</span><br>
+                                        @endif
                                     @endforeach
                                 </td>
                             </tr>
