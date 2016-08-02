@@ -18,6 +18,10 @@ class HarvestingController extends Controller
     public function index()
     {
         //
+        $harvestings = Harvesting::all();
+        //echo var_dump($harvestings);
+        return view('harvesting.index', compact('harvestings'));
+
     }
 
     /**

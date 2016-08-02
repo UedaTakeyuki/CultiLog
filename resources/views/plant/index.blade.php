@@ -1,11 +1,11 @@
 @extends('layout')
  
 @section('content')
-    <h1>Plants</h1>
+    <h1>Harvestings</h1>
  
     <hr/>
      
-    @foreach($plants as $plant)
+    @foreach($harvestings as $harvesting)
         <article>
             <h2>
                 <a href="{{ url('plant', $plant->id) }}">

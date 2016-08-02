@@ -11,10 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', //function () {
+//    return view('welcome');
 //Route::get('plant', 'PlantController@index');
-});
+    'UnitController@index');
+//});
 
 // unit
 //Route::get('unit', 'UnitsController@index');
@@ -31,6 +32,7 @@ Route::post('plant', 'PlantController@store');
 Route::resource('planting', 'PlantingController');
 
 // harvesting
+Route::get('harvesting', 'HarvestingController@index');
 Route::get('harvesting/create/{planting_id}', 'HarvestingController@create');
 Route::post('harvesting', 'HarvestingController@store');
 //Route::resource('harvesting', 'HarvestingController');
