@@ -12,18 +12,26 @@
     <tr>
       <td>
         <a href="{{ url('planting', $planting->id) }}" data-ajax="false" >
-          {{$planting->plant->name}}
+          @if(($planting->closed_at)==0)
+            {{$planting->plant->name}}
+          @else
+            <span class="text-muted">{{$planting->plant->name}}</span>
+          @endif
         </a>
         <span class="badge">{{$planting->duration()}}</span>
       </td>
 <!--      <td><a href="/planting/show/{{$planting}}" class="btn btn-primary btn-sm">詳細</a></td>
       <td><a href="/planting/edit/{{$planting}}" class="btn btn-primary btn-sm">編集</a></td>-->
       <td>
-        <form method="post" action="/planting/close/{{$planting->id}}">
-          <input name="_method" type="hidden" value="delete">
-          <input type="hidden" name="_token" value="{{csrf_token()}}">
-          <input type="submit" value="CLOSE" class="btn btn-danger btn-sm btn-destroy">
-        </form>
+        @if(($planting->closed_at)==0)
+          <form method="post" action="/planting/close/{{$planting->id}}">
+            <input name="_method" type="hidden" value="delete">
+            <input type="hidden" name="_token" value="{{csrf_token()}}">
+            <input type="submit" value="CLOSE" class="btn btn-danger btn-sm btn-destroy">
+          </form>
+        @else
+          <input type="submit" value="Closed at {{$planting->closed_at}}" class="btn btn-sm btn-destroy" disabled="disabled">
+        @endif
       </td>
     </tr>
     @endforeach

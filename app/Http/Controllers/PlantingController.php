@@ -125,5 +125,6 @@ class PlantingController extends Controller
         $planting = Planting::findOrFail($id);
         $planting->closed_at = date('Y-m-d');
         $planting->save();
+        return redirect('shelf/'.$planting->shelf_id);
     }
 }
