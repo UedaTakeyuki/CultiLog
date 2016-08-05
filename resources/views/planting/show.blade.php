@@ -1,4 +1,4 @@
-@extends('layout3')
+@extends('layout4_unit_active')
 
 @section('header_after')
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -41,10 +41,12 @@
 @endsection
 
 @section('content')
-    <h1>Planting</h1>
+    <h1>{{$planting->plant->name}}の定植</h1>
 
-    <h2>{{$planting->plant->name}}</h2>
+    <!--<h2>{{$planting->plant->name}}</h2>-->
     <h3>定植日：{{$planting->planted_at}}<br>
+    <h3>場所：棚{{$planting->shelf->name}}<br>
+    
     @if(($planting->closed_at)!=0)
       撤収日：{{$planting->closed_at}}<br>
     @endif

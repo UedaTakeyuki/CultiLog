@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layout4_plant_active')
  
 @section('content')
 {{ $plant->kana }}

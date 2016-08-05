@@ -1,8 +1,9 @@
-@extends('layout')
+@extends('layout4_plant_active')
 
 
 @section('content')
-    <h1>品種追加</h1>
+    <h1>品種追加<!--</h1>-->
+    <a href="/plant/create" class="btn btn-primary btn-sm">一覧</a></h1>
  
     <hr/>
  

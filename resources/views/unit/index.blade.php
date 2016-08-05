@@ -1,9 +1,9 @@
-@extends('layout3')
+@extends('layout4_unit_active')
  
 @section('content')
-    <h1>栽培棚管理</h1>
-    <a href="/plant" class="btn btn-primary btn-sm">品種一覧</a>
-    {{Request::server('HTTP_X_FORWARDED_PROTO') == 'https'?1:2}}
+    <h1>栽培棚</h1>
+<!--    <a href="/plant" class="btn btn-primary btn-sm">品種一覧</a>
+    {{Request::server('HTTP_X_FORWARDED_PROTO') == 'https'?1:2}} -->
     <hr/>
      
     <div class="container-fluid">

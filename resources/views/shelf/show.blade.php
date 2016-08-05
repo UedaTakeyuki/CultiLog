@@ -1,4 +1,4 @@
-@extends('layout3')
+@extends('layout4_unit_active')
 
 @section('content')
     <h1>棚</h1>

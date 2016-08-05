@@ -1,7 +1,7 @@
-@extends('layout3')
+@extends('layout4_unit_active')
  
 @section('content')
-    <h1>Plantings</h1>
+    <h1>定植</h1>
     <a href="/planting/create" class="btn btn-primary btn-sm">追加</a>
  
     <hr/>
