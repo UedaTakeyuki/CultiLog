@@ -29,10 +29,12 @@
                                     <br>
                                     @foreach($shelf->plantings as $planting)
                                         @if(($planting->closed_at)==0)
+                                            <div class="indent_3">
                                             <a href="{{Request::server('HTTP_X_FORWARDED_PROTO') == 'https' ? secure_url('planting', $planting->id) : url('planting', $planting->id) }}" data-ajax="false" >
                                                 {{$planting->plant->name}}
                                             </a>
                                             <span class="badge pull-right">{{$planting->duration()}}</span><br>
+                                            </div>
                                         @endif
                                     @endforeach
                                 </td>

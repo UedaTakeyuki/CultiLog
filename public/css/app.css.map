@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.scss"],"names":[],"mappings":"AAEA;EACI,kBAAkB,EACrB","file":"app.css","sourcesContent":["// @import \"node_modules/bootstrap-sass/assets/stylesheets/bootstrap\";\n\n.indent_3 {\n    padding-left: 2em;\n}"],"sourceRoot":"/source/"}
