@@ -44,9 +44,13 @@ Route::post('harvesting', 'HarvestingController@store');
 
 Route::get('ajaxpro2', function()
 {
+/*
     $plants = App\Plant::orderBy('kana', 'ASC')->get();
     foreach ($plants as $value){
         $json[] = $value->name;
     }
+    */
+    //return response()->json(App\Plant::orderBy('kana', 'ASC')->lists("name"));
+    $json = App\Plant::orderBy('kana', 'ASC')->lists("name");
     return json_encode($json, JSON_UNESCAPED_UNICODE);
 });
