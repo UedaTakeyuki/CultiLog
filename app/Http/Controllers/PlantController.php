@@ -75,6 +75,8 @@ class PlantController extends Controller
     public function edit($id)
     {
         //
+        $plant = Plant::findOrFail($id);
+        return view('plant.edit', compact('plant'));
     }
 
     /**
@@ -87,6 +89,10 @@ class PlantController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $plant = Plant::findOrFail($id);
+        $plant->update($request->all());
+        return redirect(url('plant', [$plant->id]));
+
     }
 
     /**

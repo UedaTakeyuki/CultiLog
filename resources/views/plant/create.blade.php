@@ -2,26 +2,13 @@
 
 
 @section('content')
-    <h1>品種追加<!--</h1>-->
-    <a href="/plant/create" class="btn btn-primary btn-sm">一覧</a></h1>
+    <h1>品種追加
+        {!! link_to(action('PlantController@index'), '一覧', ['class' => 'btn btn-primary']) !!}
+    </h1>
  
     <hr/>
  
     {!! Form::open(['url' => 'plant']) !!}
-        <div class="form-group">
-            {!! Form::label('name', '品種名:') !!}
-            {!! Form::text('name', null, ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('kana', 'ヨミガナ:') !!}
-            {!! Form::text('kana', null, ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('alias', '別名:') !!}
-            {!! Form::text('alias', null, ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::submit('追加', ['class' => 'btn btn-primary form-control']) !!}
-        </div>
+        @include('plant.form', ['name' => null, 'kana' => null, 'alias' => null, 'submitButton_title' => '変更'])
     {!! Form::close() !!}
 @endsection

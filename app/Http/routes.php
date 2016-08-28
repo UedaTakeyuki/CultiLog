@@ -30,6 +30,9 @@ Route::get('plant/create', 'PlantController@create');
 Route::get('plant/{id}', 'PlantController@show');
 
 Route::post('plant', 'PlantController@store');
+Route::get('plant/{id}/edit', 'PlantController@edit');  // 追加
+Route::patch('plant/{id}', 'PlantController@update');  // 追加
+
 
 // planting
 Route::get('planting/create/{shelf_id}', 'PlantingController@create');

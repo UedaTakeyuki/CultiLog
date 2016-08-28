@@ -44,7 +44,9 @@
 
 @section('content')
 {{ $plant->kana }}
-    <h1>{{ $plant->name }}</h1>
+    <h1>{{ $plant->name }}
+      {!! link_to(action('PlantController@edit', [$plant->id]), '編集', ['class' => 'btn btn-primary']) !!}
+    </h1>
  
     <hr/>
  
