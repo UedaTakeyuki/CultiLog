@@ -10,6 +10,8 @@ use App\Shelf;
 use App\Plant;
 use App\Planting;
 
+use Excel;
+
 class PlantingController extends Controller
 {
     /**
@@ -158,6 +160,31 @@ class PlantingController extends Controller
         $planting->closed_at = null;
         $planting->save();
         return redirect('shelf/'.$planting->shelf_id);
+    }
+
+    public function excel()
+    {
+        //
+        $plantings = Planting::all();
+        $plantings2 = Planting::join('shelves', 'shelves.id', '=', 'plantings.shelf_id')
+            ->join('plants', 'plants.id', '=', 'plantings.plant_id')
+            ->select(
+                'plantings.id',
+                'shelves.name as shelf_name',
+                'plants.name as plant_name',
+                'plantings.planted_at',
+                'plantings.closed_at',
+                'plantings.created_at',
+                'plantings.updated_at',
+                'plantings.deleted_at'
+                )
+            ->get();
+        //$users = User::select('id', 'name', 'email', 'created_at')->get();
+        Excel::create('plantings', function($excel) use($plantings2) {
+            $excel->sheet('Sheet 1', function($sheet) use($plantings2) {
+                $sheet->fromArray($plantings2);
+            });
+        })->export('xls');
     }
     
 }

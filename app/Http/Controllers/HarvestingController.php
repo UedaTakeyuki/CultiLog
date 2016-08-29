@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Planting;
 use App\Harvesting;
 
+use Excel;
+
 class HarvestingController extends Controller
 {
     /**
@@ -103,4 +105,33 @@ class HarvestingController extends Controller
     {
         //
     }
+    
+    public function excel()
+    {
+        //
+        $harvestings = Harvesting::all();
+        $harvestings2 = Harvesting::join('plantings', 'plantings.id', '=', 'harvestings.planting_id')
+            ->join('shelves', 'shelves.id', '=', 'plantings.shelf_id')
+            ->join('plants', 'plants.id', '=', 'plantings.plant_id')
+            ->select(
+                'harvestings.id as harvesting_id',
+                'shelves.name as shelf_name',
+                'plants.name as plant_name',
+                'plantings.id as planting_id',
+                'plantings.planted_at',
+                'harvestings.harvested_at',
+                'harvestings.weight',
+                'harvestings.created_at',
+                'harvestings.updated_at',
+                'harvestings.deleted_at'
+                )
+            ->get();
+        //$users = User::select('id', 'name', 'email', 'created_at')->get();
+        Excel::create('harvestings', function($excel) use($harvestings2) {
+            $excel->sheet('Sheet 1', function($sheet) use($harvestings2) {
+                $sheet->fromArray($harvestings2);
+            });
+        })->export('xls');
+    }
+
 }

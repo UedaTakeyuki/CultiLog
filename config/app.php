@@ -157,7 +157,9 @@ return [
         App\Providers\RouteServiceProvider::class,
         
         Collective\Html\HtmlServiceProvider::class,  // 追加
-
+        //http://laraveldaily.com/laravel-excel-export-eloquent-models-results-easily/
+        Collective\Bus\BusServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -206,6 +208,8 @@ return [
         
         'Form' => Collective\Html\FormFacade::class,  // 追加
         'Html' => Collective\Html\HtmlFacade::class,  // 追加
+        
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 

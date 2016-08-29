@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Plant;
 
+use Excel;
+
 class PlantController extends Controller
 {
     /**
@@ -104,5 +106,18 @@ class PlantController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    public function excel()
+    {
+        //
+        $plants = Plant::orderBy('kana', 'ASC')->get();
+        
+        //$users = User::select('id', 'name', 'email', 'created_at')->get();
+        Excel::create('plants', function($excel) use($plants) {
+            $excel->sheet('Sheet 1', function($sheet) use($plants) {
+                $sheet->fromArray($plants);
+            });
+        })->export('xls');
     }
 }

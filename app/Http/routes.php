@@ -27,24 +27,26 @@ Route::resource('shelf', 'ShelfController');
 // plant
 Route::get('plant', 'PlantController@index');
 Route::get('plant/create', 'PlantController@create');
+Route::get('plant/excel', 'PlantController@excel');
 Route::get('plant/{id}', 'PlantController@show');
 
 Route::post('plant', 'PlantController@store');
 Route::get('plant/{id}/edit', 'PlantController@edit');  // 追加
 Route::patch('plant/{id}', 'PlantController@update');  // 追加
 
-
 // planting
 Route::get('planting/create/{shelf_id}', 'PlantingController@create');
 Route::post('planting/close/{id}', 'PlantingController@close');
 Route::post('planting/reopen/{id}', 'PlantingController@reopen');
 Route::delete('planting/destroy/{id}', 'PlantingController@destroy');
+Route::get('planting/excel', 'PlantingController@excel');
 Route::resource('planting', 'PlantingController');
 
 // harvesting
 Route::get('harvesting', 'HarvestingController@index');
 Route::get('harvesting/create/{planting_id}', 'HarvestingController@create');
 Route::post('harvesting', 'HarvestingController@store');
+Route::get('harvesting/excel', 'HarvestingController@excel');
 //Route::resource('harvesting', 'HarvestingController');
 
 Route::get('ajaxpro2', function()
