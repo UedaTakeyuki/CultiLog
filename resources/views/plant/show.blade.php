@@ -60,7 +60,7 @@
     
     <hr/>
 
-    <h3>定植</h3><br>
+    <h3>定植一覧</h3><br>
     <table class="table table-striped">
         @foreach($plant->plantings as $planting)
             <tr>

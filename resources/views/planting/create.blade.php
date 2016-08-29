@@ -49,8 +49,8 @@ $('#basics').typeahead({
     <hr/>
  
     {!! Form::open(['url' => 'planting']) !!}
-        @if(isset($planting_id))
-            {{Form::hidden('shelf_id', $planting_id)}}
+        @if(isset($shelf_id))
+            {{Form::hidden('shelf_id', $shelf_id)}}
         @else
             <div class="form-group">
                 {!! Form::label('shelf_id', '棚:') !!}

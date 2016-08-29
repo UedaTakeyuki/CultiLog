@@ -31,6 +31,7 @@ $('#basics').typeahead({
 //        return $.get('http://cultilog.uedasoft.com/ajaxpro.php', { query: query }, function (data) {
 //        return $.get('/ajaxpro.php/', { query: query }, function (data) {
         return $.get('/ajaxpro2/', { query: query }, function (data) {
+//        return $.get('https://plants-log-ueda.c9users.io/ajaxpro.php', { query: query }, function (data) {
         		console.log(data);
         		data = $.parseJSON(data);
 	            return process(data);
@@ -43,25 +44,29 @@ $('#basics').typeahead({
 @endsection
 
 @section('content')
-<h1>定植の追加</h1>
- 
+<h1>定植の編集</h1>
+    <!-- <a href="/plant" class="btn btn-primary btn-sm">品種一覧</a> -->
+          <form method="post" action="/planting/destroy/{{$planting->id}}">
+            <input name="_method" type="hidden" value="delete">
+            <input type="hidden" name="_token" value="{{csrf_token()}}">
+            <input type="submit" value="データの削除" class="btn btn-danger btn-sm btn-destroy">
+          </form>
     <hr/>
  
-    {!! Form::open(['url' => 'planting']) !!}
-        <div class="form-group">
-            {!! Form::label('shelf_id', '棚:') !!}
-            {!! Form::text('shelf_id', null, ['class' => 'form-control']) !!}
-        </div>
+    {!! Form::model($planting, ['method' => 'PATCH', 'url' => ['planting', $planting->id]]) !!}
+        {{Form::hidden('shelf_id', $planting->shelf->id)}}
+        <!--
         <div class="form-group">
             {!! Form::label('plant_id', '品種:') !!}
-            {!! Form::text('plant_id', null, ['id' => 'basics', 'class' => 'form-control']) !!}
+            {!! Form::text('plant_id', $planting->plant->name, ['id' => 'basics', 'class' => 'form-control']) !!}
         </div>
+        -->
         <div class="form-group">
             {!! Form::label('planted_at', '定植日:') !!}
-            {!! Form::text('planted_at', null, ['id' => 'datepicker', 'class' => 'form-control']) !!}
+            {!! Form::text('planted_at', $planting->planted_at, ['id' => 'datepicker', 'class' => 'form-control']) !!}
         </div>
         <div class="form-group">
-            {!! Form::submit('追加', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('編集', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     {!! Form::close() !!}
 @endsection

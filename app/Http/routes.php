@@ -36,7 +36,9 @@ Route::patch('plant/{id}', 'PlantController@update');  // 追加
 
 // planting
 Route::get('planting/create/{shelf_id}', 'PlantingController@create');
-Route::delete('planting/close/{id}', 'PlantingController@close');
+Route::post('planting/close/{id}', 'PlantingController@close');
+Route::post('planting/reopen/{id}', 'PlantingController@reopen');
+Route::delete('planting/destroy/{id}', 'PlantingController@destroy');
 Route::resource('planting', 'PlantingController');
 
 // harvesting

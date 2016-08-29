@@ -41,23 +41,39 @@
 @endsection
 
 @section('content')
-    <h1>{{$planting->plant->name}}の定植</h1>
+    <h1>
+      {{$planting->plant->name}}の定植
+      {!! link_to(action('PlantingController@edit', ['id' => $planting->id]), '編集', ['class' => 'btn btn-primary']) !!}
+    </h1>
 
     <!--<h2>{{$planting->plant->name}}</h2>-->
-    <h3>定植日：{{$planting->planted_at}}<br>
-    <h3>場所：棚{{$planting->shelf->name}}<br>
-    
-    @if(($planting->closed_at)!=0)
-      撤収日：{{$planting->closed_at}}<br>
-    @endif
+    <h3>
+      場所：棚{{$planting->shelf->name}}<br>
+      定植日：{{$planting->planted_at}}
+      <form method="post" action="/planting/close/{{$planting->id}}">
+        <input name="_method" type="hidden" value="post">
+        <input type="hidden" name="_token" value="{{csrf_token()}}">
+        <input type="submit" value="撤収処理" class="btn btn-danger btn-sm btn-warning">
+      </form>
+
+      <br>
+      @if(($planting->closed_at)!=0)
+        撤収日：{{$planting->closed_at}}
+        {!! Form::model($planting, ['method' => 'post', 'url' => ['planting/reopen', $planting->id]]) !!}
+          {!! Form::submit('再開', ['class' => 'btn btn-sm btn-primary']) !!}
+        {!! Form::close() !!}
+
+        <br>
+      @endif
     </h3>
-
-    <a href="/harvesting/create/{{$planting->id}}" class="btn btn-primary btn-sm">収穫</a>
-
+    <hr/>
+    
+    <h3>収穫一覧
+      {!! link_to(action('HarvestingController@create', ['planting_id' => $planting->id]), '追加', ['class' => 'btn btn-primary']) !!}
+    </h3>
     <!--  グラフの描画エリア -->
     <div id="chart_div" style="width: 100%; height: 350px"></div>
  
-    <hr/>
 
     <table class="table table-striped"> 
     @foreach($planting->harvestings as $harvesting)

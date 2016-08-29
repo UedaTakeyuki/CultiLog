@@ -34,8 +34,8 @@ class PlantingController extends Controller
     {
         //
         if ($id != null){
-            $planting_id = $id;
-            return view('planting.create',compact('planting_id'));
+            $shelf_id = $id;
+            return view('planting.create',compact('shelf_id'));
         } else {
             return view('planting.create');
         }
@@ -58,7 +58,6 @@ class PlantingController extends Controller
         $planting->plant_id = Plant::where('name', $request->input('plant_id'))->first()->id;
         $planting->save();
  
-        // ③記事一覧へリダイレクト
         return redirect('shelf/'.$request->input('shelf_id'));
     }
 
@@ -98,6 +97,23 @@ class PlantingController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $planting = Planting::findOrFail($id);
+        //$planting->update($request->all());
+        //return redirect(url('planting', [$planting->id]));
+        if (!is_null($request->input('planted_at'))){
+            $planting->planted_at = $request->input('planted_at');
+        }
+        if (!is_null($request->input('shelf_id'))){
+            $planting->shelf_id = $request->input('shelf_id');
+        }
+        if (!is_null($request->input('plant_id'))){
+            $planting->plant_id = Plant::where('name', $request->input('plant_id'))->first()->id;
+        }
+        $planting->save();
+ 
+        return redirect('shelf/'.$request->input('shelf_id'));
+
+
     }
 
     /**
@@ -109,8 +125,9 @@ class PlantingController extends Controller
     public function destroy($id)
     {
         //
+        $shelf_id = Planting::findOrFail($id)->shelf_id;
         Planting::destroy($id);
-        return redirect('planting');
+        return redirect('shelf/'.$shelf_id);
     }
 
     /**
@@ -127,4 +144,20 @@ class PlantingController extends Controller
         $planting->save();
         return redirect('shelf/'.$planting->shelf_id);
     }
+    
+    /**
+     * Reopen the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function reopen($id)
+    {
+        //
+        $planting = Planting::findOrFail($id);
+        $planting->closed_at = null;
+        $planting->save();
+        return redirect('shelf/'.$planting->shelf_id);
+    }
+    
 }
