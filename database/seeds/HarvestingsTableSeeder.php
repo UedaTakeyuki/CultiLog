@@ -16,6 +16,7 @@ class HarvestingsTableSeeder extends Seeder
         $this->add_harvesting("2016-04-04", "56", "24.00");
         $this->add_harvesting("2016-04-04", "56", "17.00");
         $this->add_harvesting("2016-04-06", "51", "18.50");
+        $this->add_harvesting("2016-04-01", "63", "567.90");
         $this->add_harvesting("2016-04-01", "63", "192.00");
         $this->add_harvesting("2016-04-01", "63", "410.40");
         $this->add_harvesting("2016-03-23", "15", "130.00");
