@@ -27,7 +27,12 @@ Route::resource('shelf', 'ShelfController');
 // plant
 Route::get('plant', 'PlantController@index');
 Route::get('plant/create', 'PlantController@create');
-Route::get('plant/excel', 'PlantController@excel');
+Route::get('plant/excel',
+    [
+        'as' => 'download.plants.excel',
+        'uses' => 'PlantController@excel'
+    ]
+);
 Route::get('plant/{id}', 'PlantController@show');
 
 Route::post('plant', 'PlantController@store');
@@ -39,15 +44,29 @@ Route::get('planting/create/{shelf_id}', 'PlantingController@create');
 Route::post('planting/close/{id}', 'PlantingController@close');
 Route::post('planting/reopen/{id}', 'PlantingController@reopen');
 Route::delete('planting/destroy/{id}', 'PlantingController@destroy');
-Route::get('planting/excel', 'PlantingController@excel');
+Route::get('planting/excel',
+    [
+        'as' => 'download.plantings.excel',
+        'uses' => 'PlantingController@excel'
+    ]
+);
 Route::resource('planting', 'PlantingController');
 
 // harvesting
 Route::get('harvesting', 'HarvestingController@index');
 Route::get('harvesting/create/{planting_id}', 'HarvestingController@create');
 Route::post('harvesting', 'HarvestingController@store');
-Route::get('harvesting/excel', 'HarvestingController@excel');
+Route::get('harvesting/excel', 
+    [
+        'as' => 'download.harvestings.excel',
+        'uses' => 'HarvestingController@excel'
+    ]
+);
 //Route::resource('harvesting', 'HarvestingController');
+
+Route::get('download', function(){
+    return View::make('download.index');
+});
 
 Route::get('ajaxpro2', function()
 {

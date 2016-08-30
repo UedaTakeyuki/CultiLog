@@ -114,7 +114,7 @@ class PlantController extends Controller
         $plants = Plant::orderBy('kana', 'ASC')->get();
         
         //$users = User::select('id', 'name', 'email', 'created_at')->get();
-        Excel::create('plants', function($excel) use($plants) {
+        Excel::create('plant', function($excel) use($plants) {
             $excel->sheet('Sheet 1', function($sheet) use($plants) {
                 $sheet->fromArray($plants);
             });

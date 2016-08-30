@@ -170,10 +170,10 @@ class PlantingController extends Controller
             ->join('plants', 'plants.id', '=', 'plantings.plant_id')
             ->select(
                 'plantings.id',
-                'shelves.name as shelf_name',
-                'plants.name as plant_name',
-                'plantings.planted_at',
-                'plantings.closed_at',
+                'shelves.name as 棚',
+                'plants.name as 品種',
+                'plantings.planted_at as 定植日',
+                'plantings.closed_at as 撤収日',
                 'plantings.created_at',
                 'plantings.updated_at',
                 'plantings.deleted_at'

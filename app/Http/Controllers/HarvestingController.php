@@ -114,13 +114,13 @@ class HarvestingController extends Controller
             ->join('shelves', 'shelves.id', '=', 'plantings.shelf_id')
             ->join('plants', 'plants.id', '=', 'plantings.plant_id')
             ->select(
-                'harvestings.id as harvesting_id',
-                'shelves.name as shelf_name',
-                'plants.name as plant_name',
-                'plantings.id as planting_id',
-                'plantings.planted_at',
-                'harvestings.harvested_at',
-                'harvestings.weight',
+                'harvestings.id',
+                'shelves.name as 棚',
+                'plants.name as 品種',
+                'plantings.id as 定植id',
+                'plantings.planted_at as 定植日',
+                'harvestings.harvested_at as 収穫日',
+                'harvestings.weight as 重さ',
                 'harvestings.created_at',
                 'harvestings.updated_at',
                 'harvestings.deleted_at'

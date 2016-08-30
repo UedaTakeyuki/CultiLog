@@ -18,9 +18,15 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <!-- BOOTSTRAP end -->
+
+	<!--<style type="text/css">
+      .indent_3 {
+         padding-left: 2em;
+      }
+   </style>-->
    <link rel="stylesheet" href="css/app.css">
 
-    @yield('header_after')
+   @yield('header_after')
 
 </head>
 <body>
@@ -39,13 +45,13 @@
 		<div class="collapse navbar-collapse" id="navbarEexample1">
 			<ul class="nav navbar-nav">
 				<li><a href="/unit">栽培棚</a></li>
-				<li class="active dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">品種<span class="caret"></span></a>
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">品種<span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="/plant">一覧</a></li>
 						<li><a href="/plant/create">追加</a></li>
 					</ul>
 				</li>
-				<li><a href="/download">ダウンロード</a></li>
+				<li class="active"><a href="/download">ダウンロード</a></li>
 			</ul>
 		</div>
 	</div>

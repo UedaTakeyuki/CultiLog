@@ -45,12 +45,13 @@
 		<div class="collapse navbar-collapse" id="navbarEexample1">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="/unit">栽培棚</a></li>
-				<li class="active dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">品種<span class="caret"></span></a>
+				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">品種<span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="/plant">一覧</a></li>
 						<li><a href="/plant/create">追加</a></li>
 					</ul>
 				</li>
+			    <li><a href="/download">ダウンロード</a></li>
 			</ul>
 		</div>
 	</div>
