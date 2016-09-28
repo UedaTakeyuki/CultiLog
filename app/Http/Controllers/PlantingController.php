@@ -165,7 +165,9 @@ class PlantingController extends Controller
     public function excel()
     {
         //
-        $plantings = Planting::all();
+        $plants = Plant::all();
+
+//        $plantings = Planting::all();
         $plantings2 = Planting::join('shelves', 'shelves.id', '=', 'plantings.shelf_id')
             ->join('plants', 'plants.id', '=', 'plantings.plant_id')
             ->select(
@@ -179,12 +181,32 @@ class PlantingController extends Controller
                 'plantings.deleted_at'
                 )
             ->get();
-        //$users = User::select('id', 'name', 'email', 'created_at')->get();
-        Excel::create('plantings', function($excel) use($plantings2) {
-            $excel->sheet('Sheet 1', function($sheet) use($plantings2) {
+        Excel::create('plantings', function($excel) use($plantings2, $plants) {
+            $excel->sheet('定植', function($sheet) use($plantings2) {
                 $sheet->fromArray($plantings2);
+                for ($i = 3; $i <= 250; $i++){
+                    $objValidation = $sheet->getCell('C'.$i)->getDataValidation();
+                    $objValidation->setType(\PHPExcel_Cell_DataValidation::TYPE_LIST);
+                    $objValidation->setErrorStyle(\PHPExcel_Cell_DataValidation::STYLE_INFORMATION);
+                    $objValidation->setAllowBlank(false);
+                    $objValidation->setShowInputMessage(true);
+                    $objValidation->setShowErrorMessage(true);
+                    $objValidation->setShowDropDown(true);
+                    $objValidation->setErrorTitle('Input error');
+                    $objValidation->setError('Value is not in list.');
+                    $objValidation->setPromptTitle('Pick from list');
+                    $objValidation->setPrompt('Please pick a value from the drop-down list.');
+                    //$objValidation->setFormula1('"Item A,Item B,Item C"'); //note this!
+                    $objValidation->setFormula1('品種!$B$2:$B$38'); //note this!
+                }
+                $sheet->insertNewColumnBefore( 'B', 1 );
+                $sheet->getCell('B1')->setValue("編集");
             });
-        })->export('xls');
+            $excel->sheet('品種', function($sheet) use($plants) {
+                $sheet->fromArray($plants);
+            });
+//        })->export('xls');
+        })->download('xls');
     }
     
 }
