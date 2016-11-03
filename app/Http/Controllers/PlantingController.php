@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Shelf;
 use App\Plant;
 use App\Planting;
+use App\Unit;
 
 use Excel;
 
@@ -86,7 +87,8 @@ class PlantingController extends Controller
     {
         //
         $planting = Planting::findOrFail($id);
-        return view('planting.edit',compact('planting'));
+        $units = Unit::all();
+        return view('planting.edit',compact('planting', 'units'));
     }
 
     /**

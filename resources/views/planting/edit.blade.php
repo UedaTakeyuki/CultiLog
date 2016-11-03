@@ -44,7 +44,7 @@ $('#basics').typeahead({
 @endsection
 
 @section('content')
-<h1>定植の編集</h1>
+<h1>{{ $planting->plant->name }}定植の編集</h1>
     <!-- <a href="/plant" class="btn btn-primary btn-sm">品種一覧</a> -->
           <form method="post" action="/planting/destroy/{{$planting->id}}">
             <input name="_method" type="hidden" value="delete">
@@ -61,6 +61,16 @@ $('#basics').typeahead({
             {!! Form::text('plant_id', $planting->plant->name, ['id' => 'basics', 'class' => 'form-control']) !!}
         </div>
         -->
+        <div class="form-group">
+            {!! Form::label('shelf_id', '棚:') !!}
+            <select  class="form-control" name="shelf_id">
+                @foreach($units as $unit)
+                    @foreach($unit->shelves as $shelf)
+                        <option value="{{$shelf->id}}" {{$shelf->id == $planting->shelf->id ? 'selected' : '' }}>{{$shelf->name}}</option>
+                    @endforeach
+                @endforeach
+            </select>
+        </div>
         <div class="form-group">
             {!! Form::label('planted_at', '定植日:') !!}
             {!! Form::text('planted_at', $planting->planted_at, ['id' => 'datepicker', 'class' => 'form-control']) !!}
